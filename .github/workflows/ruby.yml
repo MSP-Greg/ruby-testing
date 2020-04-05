@@ -10,10 +10,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu, windows ]
-        ruby: [ 2.5.7, 2.5.8, 2.6.0, 2.6.3, 2.6, 2.7 ]
+        os: [ windows ]
+        ruby: [ 2.4, 2.5.0, 2.5.1, 2.5.3, 2.5.4, 2.5.5, 2.5.6, 2.5.7, 2.5.8, 2.6.0, 2.6, 2.7 ]
         include:
-          - { os: ubuntu , ruby: head  }
           - { os: windows, ruby: mingw }
           - { os: windows, ruby: mswin }
     steps:
