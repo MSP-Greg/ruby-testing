@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu, windows ]
-        ruby: [ 2.5.7, 2.5.8, 2.6, 2.7 ]
+        ruby: [ 2.5.7, 2.5.8, 2.6.0, 2.6.3, 2.6, 2.7 ]
         include:
           - { os: ubuntu , ruby: head  }
           - { os: windows, ruby: mingw }
