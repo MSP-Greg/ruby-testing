@@ -1,0 +1,29 @@
+name: CI
+
+on: [push]
+
+jobs:
+  testing:
+    name: >-
+      ${{ matrix.os }} ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ ubuntu, windows ]
+        ruby: [ 2.5.7, 2.5.8, 2.6, 2.7 ]
+        include:
+          - { os: ubuntu , ruby: head  }
+          - { os: windows, ruby: mingw }
+          - { os: windows, ruby: mswin }
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Ruby Install
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby }}
+
+      - name: binding issue
+        run: ruby binding-local-variable.rb
