@@ -48,5 +48,6 @@ STDOUT.flush
     a[binding]
   rescue => e
     puts "#{v}  #{e.class}"
+    STDOUT.flush
   end
 end
