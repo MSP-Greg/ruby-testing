@@ -1,4 +1,4 @@
-puts "\n#{RUBY_DESCRIPTION}\nDirect local_variable_set"
+puts "\n#{RUBY_DESCRIPTION}\n\nDirect local_variable_set"
 
 [:$0, :$~, :$_].each do |v|
   begin
@@ -9,6 +9,7 @@ puts "\n#{RUBY_DESCRIPTION}\nDirect local_variable_set"
 end
 
 puts "\nLmabdas local_variable_defined?"
+STDOUT.flush
 
 [:$0, :$~, :$_].each do |v|
   a = -> (bind) do
@@ -23,6 +24,7 @@ puts "\nLmabdas local_variable_defined?"
 end
 
 puts "\nLambdas local_variable_get"
+STDOUT.flush
 
 [:$0, :$~, :$_].each do |v|
   a = -> (bind) do
@@ -36,6 +38,7 @@ puts "\nLambdas local_variable_get"
 end
 
 puts "\nLambdas local_variable_set"
+STDOUT.flush
 
 [:$0, :$~, :$_].each do |v|
   a = -> (bind) do
