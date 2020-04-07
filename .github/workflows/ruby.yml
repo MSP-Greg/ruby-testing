@@ -10,12 +10,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ ubuntu, windows ]
-        ruby: [ 2.5.7, 2.5.8, 2.6.0, 2.6.3, 2.6, 2.7 ]
-        include:
-          - { os: ubuntu , ruby: head  }
-          - { os: windows, ruby: mingw }
-          - { os: windows, ruby: mswin }
+        os: [ ubuntu ]
+        ruby: [  2.7 ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,5 +21,10 @@ jobs:
         with:
           ruby-version: ${{ matrix.ruby }}
 
-      - name: binding issue
-        run: ruby binding-local-variable.rb
+      - name: show
+        run: cat /etc/apt/sources.list
+      
+      - run: gem install apt-spy2
+      
+      - run: apt-spy2 list
+      - run: apt-spy2 check
