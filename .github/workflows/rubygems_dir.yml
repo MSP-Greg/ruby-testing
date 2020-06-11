@@ -1,0 +1,28 @@
+name: CI
+
+on: [push]
+
+jobs:
+  testing:
+    name: >-
+      ${{ matrix.os }} ${{ matrix.ruby }}
+    runs-on: ${{ matrix.os }}-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ windows ]
+        ruby: [ 2.4, 2.5, 2.6, 2.7, mingw, mswin, jruby, jruby-head ]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Ruby Install
+        uses: MSP-Greg/ruby-setup-ruby@add-path
+        with:
+          ruby-version: ${{ matrix.ruby }}
+
+      - name: gem env
+        run   gem env
+
+      - name: RubyGems path check
+        run:  ruby gem_dirs.rb
