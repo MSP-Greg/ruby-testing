@@ -22,7 +22,7 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
 
       - name: gem env
-        run   gem env
+        run:   gem env
 
       - name: RubyGems path check
         run:  ruby gem_dirs.rb
