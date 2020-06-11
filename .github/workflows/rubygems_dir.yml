@@ -11,7 +11,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ windows ]
-        ruby: [ 2.4, 2.5, 2.6, 2.7, mingw, mswin, jruby, jruby-head ]
+        ruby: [ 2.4, 2.5, 2.6, 2.7, 2.7.1, mingw, mswin, jruby, jruby-head ]
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -20,6 +20,10 @@ jobs:
         uses: MSP-Greg/ruby-setup-ruby@add-path
         with:
           ruby-version: ${{ matrix.ruby }}
+
+      - name: RG Update 2.7.1
+        if:   matrix.ruby == '2.7.1'
+        run:  gem update --system
 
       - name: gem env
         run:   gem env
